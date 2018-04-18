@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { TaskAddComponent } from './componentes/task-add/task-add.component';
 import { TaskListComponent } from './componentes/task-list/task-list.component';
+import { TaskComponent } from './componentes/task/task.component';
+
+//Los servicios se agregan manualmente: primero se importan y después se agregan a los Providers
+import {DataService} from './services/data.service' 
 
 
 @NgModule({
@@ -13,12 +17,15 @@ import { TaskListComponent } from './componentes/task-list/task-list.component';
     AppComponent,
     NavbarComponent,
     TaskAddComponent,
-    TaskListComponent
+    TaskListComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    DataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
