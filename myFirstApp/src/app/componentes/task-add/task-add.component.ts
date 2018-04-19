@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+
+import { Task } from '../../models/task';
 
 @Component({
   selector: 'app-task-add',
@@ -6,10 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task-add.component.css']
 })
 export class TaskAddComponent implements OnInit {
+	title: string;
+	description: string;
+	//Salida al componente padre que exporta un objeto de tipo tarea
+	@Output() taskAdded = new EventEmitter<Task>();
 
-  constructor() { }
+	constructor() { }
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
+
+	addTask(){
+		//Envía hacia el componente (task-list) padre la información
+		this.taskAdded.emit({
+			title: this.title,
+			description: this.description,
+			hide: true
+		});
+		//Limpiamos el arreglo
+		this.title = '';
+		this.description = '';
+	}
 
 }
