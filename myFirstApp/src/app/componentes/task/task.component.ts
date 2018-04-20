@@ -19,9 +19,9 @@ export class TaskComponent implements OnInit {
   //Borrar tarea
   removeTask(task: Task) {
   	const response = confirm('Are you sure to delete it?');
-	if(response) {
-		this.dataService.removeTask(task);//Dentro del servicio llamamos el método de remove.
-	}  
+  	if(response) {
+  		this.dataService.removeTask(task);//Dentro del servicio llamamos el método de remove.
+  	}  
   }
 
 }
