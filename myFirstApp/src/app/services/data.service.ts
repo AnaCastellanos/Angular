@@ -37,13 +37,13 @@ export class DataService {
   	}
 
   	removeTask(task: Task) {
-      console.log(task, this.tasks);
-  		// for (let i = 0; this.tasks.length; i++) {
-  		// 	if(task == this.tasks[i]){
-  		// 		this.tasks.splice(i, 1);  //Elimina 1 item en el índice i
-  		// 		localStorage.setItem('tasks', JSON.stringify(this.tasks) );
-  		// 	}
-  		// }
+      localStorage.removeItem('tasks'); //Trabajar con el localStorage necesita un procesador más pesado.
+  		for (let i = 0; this.tasks.length; i++) {
+  			if(task == this.tasks[i]){
+  				this.tasks.splice(i, 1);  //Elimina 1 item en el índice i
+  				localStorage.setItem('tasks', JSON.stringify(this.tasks) );
+  			}
+  		}
   	}
 
 }
